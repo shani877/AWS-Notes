@@ -1,1 +1,150 @@
+🤔 What is AWS?
 
+Amazon Web Services (AWS) is the cloud computing platform offered by Amazon.
+It provides a wide range of on-demand cloud services (200+) like servers, storage, databases, networking, machine learning, and more — all accessible over the internet on a **pay-as-you-go** basis.
+
+🔑 Key Points:
+
+* Launched: 2006
+* Owned by: Amazon
+* Market Share (2025): \~31% (Global Leader in Cloud Computing)
+
+---
+
+🛠️ Benefits of Using AWS:
+
+* Scalability: Easily increase or decrease resources
+* Cost-Effective: Pay only for what you use
+* Global Reach: 100+ Availability Zones in 30+ regions
+* Secure: Complies with global standards (ISO, SOC, GDPR)
+* Flexible: Supports almost every OS, language, and framework
+
+---
+
+🚀 Common Use Cases:
+
+* Hosting websites and web apps
+* Data backup and storage
+* Machine learning and big data processing
+* DevOps automation
+* Enterprise application hosting (e.g., SAP, Oracle)
+
+---
+
+🧰 Services of AWS
+
+🔸 Compute Services
+
+* EC2 (Elastic Compute Cloud): Virtual servers in the cloud
+* Elastic Beanstalk: Easy app deployment and scaling
+* Lambda: Run code without managing servers
+* Batch: Run large-scale batch computing jobs
+
+---
+
+🔸 Storage Services
+
+* S3 (Simple Storage Service): Store and retrieve any amount of data anytime
+* EBS (Elastic Block Store): Persistent storage for EC2 instances
+* Glacier: Low-cost storage for archiving data
+* Storage Gateway: Hybrid cloud storage integration
+
+---
+
+🔸 Container Services
+
+* EKS (Elastic Kubernetes Service): Managed Kubernetes for container orchestration
+* ECS (Elastic Container Service): Run and manage containers easily
+* ECR (Elastic Container Registry): Store and manage Docker containers
+* Fargate: Run containers without managing servers
+
+---
+
+🔸 Database Services
+
+* RDS (Relational Database Service): Managed relational database service
+* DynamoDB: NoSQL database for fast, scalable apps
+* Redshift: Managed data warehouse for analytics
+
+---
+
+🔸 Network and Content Delivery Services
+
+* VPC (Virtual Private Cloud): Private network in the cloud
+* CloudFront: Fast content delivery service
+* Route 53: Scalable domain name system (DNS) service
+* Direct Connect: Dedicated network connection to AWS
+
+---
+
+🔸 Identity & Monitoring Services
+
+* IAM (Identity and Access Management): Control user access to resources
+* CloudFormation: Infrastructure as code for AWS resources
+* CloudWatch: Monitor AWS resources and apps
+* CloudTrail: Track AWS user activity and API usage
+* KMS (Key Management Service): Manage encryption keys securely
+
+---
+
+🌐 AWS Global Infrastructure
+
+The AWS global infrastructure is the foundation that powers all AWS cloud services — designed for scalability, reliability, high availability, and low latency.
+
+---
+
+🗺️ Key Components of AWS Global Infrastructure
+
+✅ Regions
+
+* What: Geographical areas where AWS has data centers
+* Current Count (2025): 35 regions (and growing)
+* Example:
+
+  * US East (N. Virginia)
+  * Asia Pacific (Mumbai)
+  * Europe (Frankfurt)
+* Note: Each region is independent, physically separated, and designed for data sovereignty
+
+---
+
+✅ Availability Zones (AZs)
+
+* What: One or more data centers within a region
+* Purpose: To provide high availability and fault tolerance
+* Each region has: 2–6 Availability Zones
+* Connectivity: AZs are connected by low-latency, high-speed links
+* Example: US East (N. Virginia) has 6 AZs named `us-east-1a` to `us-east-1f`
+
+---
+
+✅ Edge Locations
+
+* What: Data centers for Content Delivery & DNS (CloudFront, Route 53)
+* Use: Fast delivery of static & dynamic content globally
+* Current Count: Over 400+ Edge Locations
+
+---
+
+✅ Local Zones
+
+* What: Extension of an AWS Region, closer to large population centers
+* Use Case: Low-latency apps like gaming, video editing, real-time analytics
+* Example: Los Angeles, Dallas, Chennai, Bangkok
+
+---
+
+✅ Wavelength Zones
+
+* What: AWS infrastructure deployed at 5G telecom networks
+* Use Case: Ultra-low latency for mobile apps and edge computing
+* Partners: Verizon, Vodafone, KDDI, etc.
+
+---
+
+✅ AWS Outposts
+
+* What: AWS services brought to your on-premises location
+* Use: Hybrid cloud model
+
+---
