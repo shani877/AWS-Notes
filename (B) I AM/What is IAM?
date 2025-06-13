@@ -1,1 +1,194 @@
+🤔 What is IAM?
 
+AWS IAM is a security service that helps you control access to AWS resources securely. It lets you define who can do what on which AWS services.
+
+IAM Controls:
+
+* Authentication – Verifies who the user is (e.g., username + password, MFA)
+* Authorization – Grants what actions they can perform on which resources
+
+Use Cases:
+
+* Give developers access only to S3 and EC2
+* Allow EC2 instances to access S3 using IAM roles
+* Enforce MFA for root/admin access
+* Create least privilege policies (only give the access needed)
+
+---
+
+IAM Terminology
+
+* Users → Individual users, e.g. employees
+* Groups → A collection of users. Groups allow you to define permissions for all the users within it.
+* Policies → Determine what a user, group or role can or cannot do. Policy Documents are in JSON format.
+* Roles → Allows one service to access another service.
+* ARN → Amazon Resource Name, uniquely identifies any resource in AWS
+
+ARN contains 6 fields which are denoted by `:` (colon):
+ARN\:AWS\:IAM::Account no\:user/resource name
+
+1. ARN
+2. Partition name
+3. Service name
+4. Region Name
+5. Account No.
+6. User name/resource name
+
+* Root Account → The main account you first signed up to AWS with (You should put MFA onto your root account)
+* Power user access → Access to all AWS services except the management of groups and users within IAM
+* Billing Alerts → Amount that you set (e.g. \$10) will be your budget and then it will send you an alert as soon as your AWS bill goes over that.
+* AWS Budgets → Lets you quickly create custom budgets that will automatically alert you when your cost exceeds the entered amount.
+* AWS Resource Access Manager (RAM) → Allows resource sharing between accounts
+* AWS SSO (Single Sign On) → Centrally manage access to AWS accounts & sign into 3rd party tools in the AWS portal.
+
+---
+
+Components of IAM:
+
+* User
+* Groups
+* Role
+* Policy
+* MFA (Multi-Factor Authentication)
+
+---
+
+1. User
+
+An individual identity with credentials (username, password, access keys).
+Used by humans to log in and interact with AWS.
+Example: A DevOps engineer named shaani is an IAM user.
+
+Access types:
+
+* Console Access: For GUI login (Username and Password)
+* Programmatic/CLI Access: For CLI login (Access Key and Secret Access Key)
+
+Types of Users:
+
+* ROOT:
+
+  * Created during the AWS sign-up process
+  * Only one per account
+  * Full access to all services/resources
+  * Accessed via email + password
+* IAM-USER/IAM-ENTITY:
+
+  * Created to represent actual users interacting with AWS
+  * Consists of name and credentials
+  * Not the same as root user
+* FEDERATED-USER:
+
+  * Created in external identity providers (e.g., Google Workspace, AD)
+  * Authenticated through those systems
+  * Gets temporary access in AWS
+* POWER-USER:
+
+  * Defined using AWS Managed Policy `PowerUserAccess`
+  * Grants almost all permissions except IAM settings and Billing/Security controls
+
+---
+
+2. Groups
+
+A collection of IAM users.
+Policies attached to the group are inherited by all users.
+Helps simplify permission management.
+
+Example: Group `Developers` can have access to EC2 and S3.
+
+---
+
+3. Role for Services
+
+Allows communication between services or temporary access to users.
+
+* Used by services (e.g., EC2, Lambda) or third-party apps
+* No username/password — uses temporary security credentials
+* Most commonly used with EC2 or Lambda
+
+Types of Roles:
+
+* Service Role
+
+  * Used by AWS services
+  * Example: EC2 uploads files to S3 → S3 access role for EC2
+* Service-Linked Role
+
+  * Created and managed by AWS
+  * Can’t modify trust relationships
+  * Example: `AWSServiceRoleForEC2Spot`
+* Cross-Account Role
+
+  * Allows access between different AWS accounts
+  * Example: Account A users accessing S3 in Account B
+* Identity Provider (IDP) Role
+
+  * Used by external identity providers like AD, Okta, Google
+  * Uses temporary credentials via SAML or OIDC
+
+---
+
+4. Policy
+
+A JSON document that defines permissions (allow or deny actions on resources).
+Attached to users, groups, or roles.
+
+Example Policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": "s3:GetObject",
+    "Resource": "arn:aws:s3:::example-bucket/*"
+  }]
+}
+```
+
+Types of Policies:
+
+* Identity-Based Policies
+
+  * Attached to: IAM users, groups, or roles
+  * Purpose: Grant/deny permissions to identities
+  * Subtypes:
+
+    * AWS Managed
+    * Customer Managed
+    * Inline Policies (tight control, not reusable)
+
+* Resource-Based Policies
+
+  * Attached to: Resources like S3, SNS
+  * Purpose: Control access to the resource
+  * Example: Allow another AWS account to access your S3 bucket
+
+* Permissions Boundaries
+
+  * Attached to: IAM users or roles
+  * Purpose: Set a "maximum boundary" for permissions
+  * Example: Prevent delete actions even if policy allows
+
+* Organizations SCPs (Service Control Policies)
+
+  * Used in: AWS Organizations
+  * Control service/action access across OUs or accounts
+  * Example: Restrict S3 usage for all member accounts
+
+* Session Policies
+
+  * Used with: Temporary credentials (STS)
+  * Purpose: Set time-limited permission restrictions
+  * Example: Temporary read-only access for a contractor
+
+---
+
+5. MFA (Multi-Factor Authentication)
+
+Adds extra security by requiring a second authentication factor.
+Example: OTP from an app like Google Authenticator.
+Even with a password, login is blocked without the second factor.
+
+---
